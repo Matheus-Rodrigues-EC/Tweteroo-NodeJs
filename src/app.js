@@ -17,3 +17,14 @@ app.post("/sign-up", (req, res) => {
     if(!users.find((profile) => profile.username === user.username)) users.push(user);
     res.status(201).send("OK");
 })
+
+app.post("/tweets", (req, res) => {
+    let user = req.body.username;
+    if(users.find((profile) => profile.username === user)){
+        const tweet = req.body;
+        tweetList.push(tweet);
+        res.status(201).send("OK");    
+    }else{
+        res.status(401).send("UNAUTHORIZED");
+    }
+})
