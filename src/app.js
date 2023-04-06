@@ -28,3 +28,15 @@ app.post("/tweets", (req, res) => {
         res.status(401).send("UNAUTHORIZED");
     }
 })
+
+app.get("/tweets", (req, res) => {
+    if(tweetList.length <= 10){
+        res.status(200).send(tweetList);
+    }else{
+        const lastedTweets = [];
+        for (let i = tweetList.length - 10; i < tweetList.length; i++) {
+            lastedTweets.push(tweetList[i]);
+        }
+        res.status(200).send(lastedTweets);
+    }
+})
