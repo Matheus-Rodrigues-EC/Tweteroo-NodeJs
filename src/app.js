@@ -63,3 +63,19 @@ app.get("/tweets", (req, res) => {
         res.status(200).send(lastedTweets);
     }
 })
+
+app.get("/tweets/:username", (req, res) => {
+    const user = req.params.username;
+    const lastedTweets = [];
+    for (let i = 0; i < tweetList.length; i++) {
+        for (let j = 0; j < users.length; j++) {
+            if((tweetList[i].username === users[j].username) && (tweetList[i].username === user)){
+                const username = tweetList[i].username;
+                const avatar = users[j].avatar;
+                const tweet = tweetList[i].tweet;
+                lastedTweets.push({username, avatar, tweet});
+            }
+        }
+    }
+    res.status(200).send(lastedTweets);
+})
