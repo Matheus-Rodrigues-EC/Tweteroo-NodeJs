@@ -1,7 +1,5 @@
 import express from "express";
 import cors from "cors";
-import chalk from "chalk";
-import { send } from "process";
 
 const app = express();
 const PORT = 5000;
@@ -38,11 +36,29 @@ app.post("/tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
     if(tweetList.length <= 10){
-        res.status(200).send(tweetList);
+        const lastedTweets = [];
+        for (let i = 0; i < tweetList.length; i++) {
+            for (let j = 0; j < users.length; j++) {
+                if(tweetList[i].username === users[j].username){
+                    const username = tweetList[i].username;
+                    const avatar = users[j].avatar;
+                    const tweet = tweetList[i].tweet;
+                    lastedTweets.push({username, avatar, tweet});
+                }
+            }
+        }
+        res.status(200).send(lastedTweets);
     }else{
         const lastedTweets = [];
         for (let i = tweetList.length - 10; i < tweetList.length; i++) {
-            lastedTweets.push(tweetList[i]);
+            for (let j = 0; j < users.length; j++) {
+                if(tweetList[i].username === users[j].username){
+                    const username = tweetList[i].username;
+                    const avatar = users[j].avatar;
+                    const tweet = tweetList[i].tweet;
+                    lastedTweets.push({username, avatar, tweet});
+                }
+            }
         }
         res.status(200).send(lastedTweets);
     }
