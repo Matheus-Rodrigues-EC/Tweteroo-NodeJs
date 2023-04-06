@@ -5,7 +5,6 @@ const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(express.json());
-let user = {};
 let users = [];
 let tweetList = [];
 
@@ -13,7 +12,6 @@ app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
 
 app.post("/sign-up", (req, res) => {
     const {username, avatar} = req.body;
-    user = req.body;
     if(((typeof(username) !== 'string') || username.length === 0) || ((typeof(avatar) !== 'string') || avatar.length === 0)){
         res.status(400).send("Todos os campos são obrigatórios!");
         return
@@ -25,7 +23,7 @@ app.post("/sign-up", (req, res) => {
 app.post("/tweets", (req, res) => {
     const  {tweet} = req.body;
     const username = req.headers.user;
-    if(((typeof(username) !== 'string') || user.username.length === 0) || ((typeof(tweet) !== 'string') || tweet.length === 0)){
+    if(((typeof(username) !== 'string') || username.length === 0) || ((typeof(tweet) !== 'string') || tweet.length === 0)){
         res.status(400).send("Todos os campos são obrigatórios!");
         return
     }
