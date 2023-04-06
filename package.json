@@ -1,0 +1,28 @@
+{
+  "name": "projeto12-tweteroo",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Meu primeiro projeto back-end será a construção da API do Tweteroo, um clone do Twitter!",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matt-Rodrigues-EC/projeto12-tweteroo.git"
+  },
+  "author": "Matt Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matt-Rodrigues-EC/projeto12-tweteroo/issues"
+  },
+  "homepage": "https://github.com/Matt-Rodrigues-EC/projeto12-tweteroo#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
